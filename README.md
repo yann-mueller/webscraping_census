@@ -5,7 +5,7 @@ The code is written to scrape for the [RGPH 2004](https://applications-web.hcp.m
 
 **Table of content:**
   - [Data Source](#data-source)
-  - [Website Structure](#website_structure)
+  - [Website Structure](#website-structure)
   - [Python Webscraping Code](#python-webscraping-code)
 
 
