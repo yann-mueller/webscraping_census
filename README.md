@@ -56,4 +56,4 @@ indicator_csv_name = ['active_population', 'employed_labor']
 - Condition d'Habitat des Ménages: *'typeProfil_3'*
 
 **Indicator Properties:**  
-In the beginning of the code, enter the amount of desired indicators you want to scrape. You can scrape as many as you wish from on specific category. For every indicator, also store the corresponding */<td>* block class and the corresponding name in the final *.csv* file.
+In the beginning of the code, enter the amount of desired indicators you want to scrape. You can scrape as many as you wish from on specific category. For every indicator, also store the corresponding *\<td>* block class and the corresponding name in the final *.csv* file.
