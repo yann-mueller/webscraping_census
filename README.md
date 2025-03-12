@@ -8,7 +8,8 @@ The code is written to scrape for the [RGPH 2004](https://applications-web.hcp.m
   - Website Structure
   - Python Webscraping Code
 
-** Scraped Files:**
+
+**Scraped Files:**
 Employed Labor per Municipality (.csv)
 
 
