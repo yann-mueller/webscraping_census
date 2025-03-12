@@ -27,3 +27,6 @@ Employed Labor per Municipality (.csv)
 ![Screenshot 2025-03-12 at 11-12-52 Page sans titre](https://github.com/user-attachments/assets/650fd564-8b43-4173-b992-c070aaf2f01f)
 
  ## Website Structure
+The indicators for every municipality are listed in a *n x 3* table. So the HTML code is structure as follows:
+> <tr>
+> </tr>
