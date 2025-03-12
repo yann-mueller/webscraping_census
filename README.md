@@ -27,6 +27,33 @@ Employed Labor per Municipality (.csv)
 ![Screenshot 2025-03-12 at 11-12-52 Page sans titre](https://github.com/user-attachments/assets/650fd564-8b43-4173-b992-c070aaf2f01f)
 
  ## Website Structure
-The indicators for every municipality are listed in a *n x 3* table. So the HTML code is structure as follows:
-> <tr>
-> </tr>
+The indicators for every municipality are listed in an *n x 3* table. The HTML code for <ins>one specific row</ins> is structured as follows:
+
+```
+<tr>
+  <td class="xl27"> Economic Indicator </td>
+  <td class="xl25"> 11 821</td>
+  <td class="xl25"> 9.2</td>
+</tr>
+```
+The name of the indicator is in the first *\<td>* block while the total number of the indicator and the percentage are in the second and third *\<td>* block, respectively. The second and third block have class *"xl25"* while the class of the first *\<td>* block varies with the indicator. So the idea of the code is to search for a *\<td>* block that contains the text of a specific indicator. Then, the value within the subsequent *\<td class="xl25">* block is stored together with the municipality name.
+
+ ## Python Webscraping Code
+ The following contains some notes on the functioning of the webscraping code.
+ ```
+# Category
+indicator_category = 'typeProfil_2'
+
+# Properties
+indicator_website_name = ['Actifs', 'Actifs occupés et chômeurs ayant déjà travaillés']
+indicator_class = ['xl26', 'xl24']
+indicator_csv_name = ['active_population', 'employed_labor']
+```
+**Indicator Category:**
+- Démographiques Générales: *'typeProfil_0'*
+- Sociales: *'typeProfil_1'*
+- Economies: *'typeProfil_2'*
+- Condition d'Habitat des Ménages: *'typeProfil_3'*
+
+**Indicator Properties:**  
+In the beginning of the code, enter the amount of desired indicators you want to scrape. You can scrape as many as you wish from on specific category. For every indicator, also store the corresponding */<td>* block class and the corresponding name in the final *.csv* file.
