@@ -3,12 +3,13 @@ The Federal Statistics Office in Morocco conducts a census every 10 years. Some 
 
 The code is written to scrape for the [RGPH 2004](https://applications-web.hcp.ma/hpmc/frmmarocenchiffres.aspx).
 
-Table of content:
+**Table of content:**
   - Data Source
   - Website Structure
   - Python Webscraping Code
 
-
+** Scraped Files:**
+Employed Labor per Municipality (.csv)
 
 
 ## Data Source
