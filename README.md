@@ -39,6 +39,7 @@ The indicators for every municipality are listed in an *n x 3* table. The HTML c
 The name of the indicator is in the first *\<td>* block while the total number of the indicator and the percentage are in the second and third *\<td>* block, respectively. The second and third block have class *"xl25"* while the class of the first *\<td>* block varies with the indicator. So the idea of the code is to search for a *\<td>* block that contains the text of a specific indicator. Then, the value within the subsequent *\<td class="xl25">* block is stored together with the municipality name.
 
  ## Python Webscraping Code
+ **Essentials**
  The following contains some notes on the functioning of the webscraping code.
  ```
 # Category
@@ -57,3 +58,26 @@ indicator_csv_name = ['active_population', 'employed_labor']
 
 **Indicator Properties:**  
 In the beginning of the code, enter the amount of desired indicators you want to scrape. You can scrape as many as you wish from on specific category. For every indicator, also store the corresponding *\<td>* block class and the corresponding name in the final *.csv* file.
+
+
+ ```
+# Iterate through all regions, provinces, and communes
+for region_value, region_text in get_dropdown_options_with_text("lRE"):
+    Select(driver.find_element(By.ID, "lRE")).select_by_value(region_value)
+    time.sleep(2)
+
+    # Get provinces for the selected region
+    for province_value, province_text in get_dropdown_options_with_text("lPR"):
+        Select(driver.find_element(By.ID, "lPR")).select_by_value(province_value)
+        time.sleep(2)
+
+        # Get communes for the selected province
+        for commune_value, commune_text in get_dropdown_options_with_text("lCMA"):
+            Select(driver.find_element(By.ID, "lCMA")).select_by_value(commune_value)
+            time.sleep(2)
+
+            # Click on the Economics tab
+            econ_tab = driver.find_element(By.ID, f"{indicator_category}")
+            econ_tab.click()
+            time.sleep(2)
+ ```
