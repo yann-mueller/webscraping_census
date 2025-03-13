@@ -39,7 +39,9 @@ The indicators for every municipality are listed in an *n x 3* table. The HTML c
 The name of the indicator is in the first *\<td>* block while the total number of the indicator and the percentage are in the second and third *\<td>* block, respectively. The second and third block have class *"xl25"* while the class of the first *\<td>* block varies with the indicator. So the idea of the code is to search for a *\<td>* block that contains the text of a specific indicator. Then, the value within the subsequent *\<td class="xl25">* block is stored together with the municipality name.
 
  ## Python Webscraping Code
- **Essentials**
+ **Essentials** *(Adjust code as nessecary)*
+
+
  The following contains some notes on the functioning of the webscraping code.
  ```
 # Category
@@ -59,6 +61,9 @@ indicator_csv_name = ['active_population', 'employed_labor']
 **Indicator Properties:**  
 In the beginning of the code, enter the amount of desired indicators you want to scrape. You can scrape as many as you wish from on specific category. For every indicator, also store the corresponding *\<td>* block class and the corresponding name in the final *.csv* file.
 
+---
+
+ **Optional** *(Code explanations, no adjustments nessecary)*
 
  ```
 # Iterate through all regions, provinces, and communes
@@ -80,4 +85,28 @@ for region_value, region_text in get_dropdown_options_with_text("lRE"):
             econ_tab = driver.find_element(By.ID, f"{indicator_category}")
             econ_tab.click()
             time.sleep(2)
- ```
+```
+The above code loops through all regions, provinces, and municipalities for which the given indicator category is selected.
+
+```
+data_dict = {
+                "region": region_text,  # Stores the visible region name
+                "province": province_text,  # Stores the visible province name
+                "municipality": commune_text  # Stores the visible municipality name
+            }
+
+for name, class_, csv_name in zip(indicator_website_name, indicator_class, indicator_csv_name):
+    try:
+        value = driver.find_element(
+            By.XPATH,
+            f"//tr[td[@class='{class_}' and contains(., '{name}')]]/td[@class='xl25']"
+        ).text.strip()
+    except:
+        value = "N/A"
+
+    # Add new column dynamically
+    data_dict[csv_name] = value
+
+results.append(data_dict)
+```
+This code snippet creates a dataframe that stores the results of indicators that were selected. The correct elements on the webpage are located using the Selenium package with the *find_element()* function. The elements are located using *By.XPATH* while the first *\<td>* block is located by looking for the given class reference and the value is then selected from the subsequent *\<td class="xl25">* block.
